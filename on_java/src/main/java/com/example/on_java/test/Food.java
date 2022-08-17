@@ -6,10 +6,12 @@ package com.example.on_java.test;
  * @info XX
  */
 public interface Food {
+    //测试
     enum Vegatable implements  Food{
         TOMATO,
         EGGPLANT;
     }
+    //测试2
     enum  Meat implements  Food{
         BEEF,
         MUTTON;
