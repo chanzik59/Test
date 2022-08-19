@@ -1,11 +1,16 @@
 package com.example.on_java.test;
 
+import lombok.Builder;
+
+import java.util.HashMap;
+
 /**
  * @author chenzhiqin
  * @date 2022/8/3 13:55
  * @info XX
  */
 
+@Builder
 public class Test {
     public static void main(String[] args) {
         String aa="40|绑定关系检查失败[6151230]|||||821393060121002|000100000112|1|01|6226090000000048||12|6226090000000048|2208121800000121220424722633||";
