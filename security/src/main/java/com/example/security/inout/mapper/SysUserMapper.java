@@ -1,6 +1,7 @@
 package com.example.security.inout.mapper;
 
 import com.example.security.inout.dao.SysUser;
+import org.apache.ibatis.annotations.Param;
 
 /**
  * @author phone
@@ -54,4 +55,14 @@ public interface SysUserMapper {
      * @return
      */
     int updateByPrimaryKey(SysUser record);
+
+    /**
+     * 用户名查询
+     *
+     * @param userName
+     * @return
+     */
+    SysUser selectByUserName(@Param("userName") String userName);
+
+
 }
