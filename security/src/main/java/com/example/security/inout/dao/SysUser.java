@@ -2,11 +2,7 @@ package com.example.security.inout.dao;
 
 import java.util.Date;
 
-/**
- * @author chenzhiqin
- */
 public class SysUser {
-
     private Long id;
 
     private String userName;

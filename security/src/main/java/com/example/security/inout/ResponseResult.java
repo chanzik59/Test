@@ -20,6 +20,11 @@ public class ResponseResult<T> {
         this.data = data;
     }
 
+    public ResponseResult(Integer code, T data) {
+        this.code = code;
+        this.data = data;
+    }
+
     public Integer getCode() {
         return code;
     }
