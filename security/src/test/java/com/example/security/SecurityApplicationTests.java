@@ -1,26 +1,22 @@
 package com.example.security;
 
+import com.example.security.inout.dao.SysUser;
+import com.example.security.inout.mapper.SysUserMapper;
 import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
 class securityapplicationtests {
-    public static void main(String[] args) {
-        String te="88";
-        priString(te);
-        te="99";
-        System.out.println(te);
 
-
-
-    }
+    @Autowired
+    private SysUserMapper userMapper;
 
     @Test
     void contextLoads() {
+        SysUser sysUser = userMapper.selectByPrimaryKey(1L);
+        System.out.println(sysUser);
     }
 
-    public static void priString(final  String te){
-        System.out.println(te);
-    }
 
 }
