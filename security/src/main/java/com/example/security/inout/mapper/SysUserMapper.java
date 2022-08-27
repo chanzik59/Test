@@ -1,15 +1,17 @@
 package com.example.security.inout.mapper;
 
 import com.example.security.inout.dao.SysUser;
-import org.apache.ibatis.annotations.Param;
+import org.springframework.stereotype.Repository;
 
 /**
+ * 表操仓储对象
+ *
  * @author phone
  */
+@Repository
 public interface SysUserMapper {
-
     /**
-     * 删除
+     * 主键删除
      *
      * @param id
      * @return
@@ -17,7 +19,7 @@ public interface SysUserMapper {
     int deleteByPrimaryKey(Long id);
 
     /**
-     * 插入
+     * 新增
      *
      * @param record
      * @return
@@ -25,7 +27,7 @@ public interface SysUserMapper {
     int insert(SysUser record);
 
     /**
-     * 字段选择插入
+     * 选择性新增
      *
      * @param record
      * @return
@@ -33,7 +35,7 @@ public interface SysUserMapper {
     int insertSelective(SysUser record);
 
     /**
-     * 查询
+     * 主键查询
      *
      * @param id
      * @return
@@ -41,7 +43,7 @@ public interface SysUserMapper {
     SysUser selectByPrimaryKey(Long id);
 
     /**
-     * 字段选择更新
+     * 选择性更新
      *
      * @param record
      * @return
@@ -49,20 +51,10 @@ public interface SysUserMapper {
     int updateByPrimaryKeySelective(SysUser record);
 
     /**
-     * 主键更新
+     * 更新
      *
      * @param record
      * @return
      */
     int updateByPrimaryKey(SysUser record);
-
-    /**
-     * 用户名查询
-     *
-     * @param userName
-     * @return
-     */
-    SysUser selectByUserName(@Param("userName") String userName);
-
-
 }
