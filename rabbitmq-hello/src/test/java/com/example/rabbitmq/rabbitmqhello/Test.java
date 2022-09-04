@@ -2,7 +2,7 @@ package com.example.rabbitmq.rabbitmqhello;
 
 import com.rabbitmq.client.AMQP;
 import com.rabbitmq.client.Channel;
-import com.rabbitmq.client.MessageProperties;
+import com.rabbitmq.client.DeliverCallback;
 
 import java.io.UnsupportedEncodingException;
 import java.nio.charset.StandardCharsets;
@@ -21,10 +21,25 @@ public class Test {
      */
     public static void main(String[] args) throws Exception {
         Channel channel = RabbitMqUtil.getChannel();
-        HashMap<String, Object> arguemnt = new HashMap<>(1);
-        arguemnt.put("x-expires", 1000L * 30);
-        AMQP.BasicProperties persistentTextPlain = MessageProperties.PERSISTENT_TEXT_PLAIN;
-        channel.queueDeclare("1314", false, false, true, arguemnt);
+        channel.basicQos();
+        priority();
+    }
+
+
+    public static void priority() throws Exception {
+        Channel channel = RabbitMqUtil.getChannel();
+      /*  HashMap<String, Object> argument = new HashMap<>(1);
+        argument.put("x-max-priority", 10);
+        channel.queueDeclare("priority", true, false, false, argument);
+        channel.queueBind("priority", "fanout", "");
+        AMQP.BasicProperties properties = new AMQP.BasicProperties.Builder().priority(1).build();
+        channel.basicPublish("fanout", "", properties, "priority1".getBytes(StandardCharsets.UTF_8));*/
+        channel.basicConsume("priority", true, (DeliverCallback) (consumerTag, message) -> {
+            System.out.println(new String(message.getBody()));
+        }, consumerTag -> {
+
+        });
+
     }
 
     /**
