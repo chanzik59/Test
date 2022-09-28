@@ -7,6 +7,11 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class OnJavaApplication {
 
     public static void main(String[] args) {
+
+        Runtime.getRuntime().addShutdownHook(new Thread(){
+            String aa="a";
+
+        });
         SpringApplication.run(OnJavaApplication.class, args);
     }
 

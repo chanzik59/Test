@@ -8,6 +8,11 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.net.HttpURLConnection;
+import java.util.Calendar;
+
 /**
  * @author chenzhiqin
  * @date 2022/7/15 17:36
@@ -53,5 +58,18 @@ public class TtlController {
         log.info("确认消息已发送{}", message);
         return message;
 
+    }
+
+    @RequestMapping("/gateway/health")
+    public void healCheck(HttpServletRequest request, HttpServletResponse response) {
+        boolean stopping = false;
+        if (stopping) {
+            long num = Calendar.getInstance().get(Calendar.SECOND);
+            num = num % 10;
+            if (num == 0) {
+                log.info("接收到客户端的请求 : " + request.getRequestURI() + " stop flag : " + stopping);
+            }
+        }
+        response.setStatus(stopping ? HttpURLConnection.HTTP_NOT_ACCEPTABLE : HttpURLConnection.HTTP_OK);
     }
 }

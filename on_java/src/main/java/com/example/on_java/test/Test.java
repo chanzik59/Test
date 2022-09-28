@@ -1,8 +1,10 @@
 package com.example.on_java.test;
 
 import lombok.Builder;
+import org.springframework.beans.factory.DisposableBean;
 
-import java.util.HashMap;
+import java.io.File;
+import java.io.IOException;
 
 /**
  * @author chenzhiqin
@@ -11,17 +13,21 @@ import java.util.HashMap;
  */
 
 @Builder
-public class Test {
-    public static void main(String[] args) {
-        String aa="40|绑定关系检查失败[6151230]|||||821393060121002|000100000112|1|01|6226090000000048||12|6226090000000048|2208121800000121220424722633||";
-        String bb="";
-        for (int i = 0; i < 20000; i++) {
-            System.out.println("执行次数"+i);
-
-            bb=bb+aa;
-        }
-        System.out.println(bb.length());
+public class Test implements DisposableBean {
+    public static void main(String[] args) throws IOException {
+        File newFile = new File("C:\\Users\\phone\\Desktop\\ucp_trxing_record20220827.txt");
+        String aa="aa";
+        setFile(newFile,aa);
+        System.out.println(newFile);
+        System.out.println(aa);
     }
+
+
+    private static void setFile(File file, String cc) {
+        file = new File("C:\\Users\\phone\\Desktop\\ucp_trxing_record20220828.txt");
+        cc = "123";
+    }
+
 
     public String getHello(String hello) {
         return hello + "123";
@@ -36,5 +42,10 @@ public class Test {
     private static String desensitization(String fieldName, String sources, String regex, String replacement) {
         String format = String.format("((<%s><!\\[CDATA\\[)%s(\\]\\]></%s>))", fieldName, regex, fieldName);
         return sources.replaceAll(format, replacement);
+    }
+
+    @Override
+    public void destroy() throws Exception {
+
     }
 }
