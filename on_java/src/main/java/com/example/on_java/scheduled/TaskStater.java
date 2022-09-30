@@ -2,6 +2,7 @@ package com.example.on_java.scheduled;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.CommandLineRunner;
+import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.Resource;
@@ -19,12 +20,13 @@ public class TaskStater implements CommandLineRunner {
     private MyScheduledConfig myScheduledConfig;
 
 
-
     @Override
     public void run(String... args) throws Exception {
-        TaskEntity task1 = new TaskEntity(1, "测试1", "0/1 * * * * ?");
+        TaskEntity task1 = new TaskEntity(1, "测试1", "0/5 * * * * ?");
+      //  TaskEntity task2 = new TaskEntity(2, "测试2", "0/5 * * * * ?");
         LinkedList<TaskEntity> taskEntities = new LinkedList<>();
         taskEntities.add(task1);
-        myScheduledConfig.refreshTasks(taskEntities);
+        //taskEntities.add(task2);
+        myScheduledConfig.batchRefreshTasks(taskEntities);
     }
 }

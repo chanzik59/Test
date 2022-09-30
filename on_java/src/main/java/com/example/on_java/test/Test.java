@@ -1,5 +1,6 @@
 package com.example.on_java.test;
 
+import javafx.util.Pair;
 import lombok.Builder;
 import org.springframework.beans.factory.DisposableBean;
 
@@ -15,11 +16,10 @@ import java.io.IOException;
 @Builder
 public class Test implements DisposableBean {
     public static void main(String[] args) throws IOException {
-        File newFile = new File("C:\\Users\\phone\\Desktop\\ucp_trxing_record20220827.txt");
-        String aa="aa";
-        setFile(newFile,aa);
-        System.out.println(newFile);
-        System.out.println(aa);
+        Pair<String, String> pair = new Pair<>("S", "v");
+        System.out.println(pair.getKey());
+        System.out.println(pair.getValue());
+
     }
 
 

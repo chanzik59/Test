@@ -10,21 +10,20 @@ import org.springframework.stereotype.Service;
  */
 @Service
 @Slf4j
-public class TaskJobServiceImpl implements TaskService {
+public class TaskJobServiceImpl2 implements TaskService {
     @Override
-    public void handleJob()  {
+    public void handleJob() {
         try {
-            String name = Thread.currentThread().getName();
-            log.info("执行任务1开始{}",name);
+            log.info("执行任务2开始");
             Thread.sleep(1000L * 10);
-            log.info("执行任务1结束{}",name);
+            log.info("执行任务2结束");
         } catch (InterruptedException e) {
-           log.error("中断异常",e);
+            log.error("中断异常", e);
         }
     }
 
     @Override
     public Integer jobId() {
-        return 1;
+        return 2;
     }
 }
