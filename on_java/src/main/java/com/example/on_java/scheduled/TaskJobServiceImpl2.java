@@ -15,7 +15,7 @@ public class TaskJobServiceImpl2 implements TaskService {
     public void handleJob() {
         try {
             log.info("执行任务2开始");
-            Thread.sleep(1000L * 10);
+            Thread.sleep(1000L * 60);
             log.info("执行任务2结束");
         } catch (InterruptedException e) {
             log.error("中断异常", e);

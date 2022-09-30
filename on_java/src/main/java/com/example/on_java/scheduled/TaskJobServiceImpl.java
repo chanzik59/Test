@@ -16,7 +16,7 @@ public class TaskJobServiceImpl implements TaskService {
         try {
             String name = Thread.currentThread().getName();
             log.info("执行任务1开始{}",name);
-            Thread.sleep(1000L * 10);
+            Thread.sleep(1000L * 6);
             log.info("执行任务1结束{}",name);
         } catch (InterruptedException e) {
            log.error("中断异常",e);

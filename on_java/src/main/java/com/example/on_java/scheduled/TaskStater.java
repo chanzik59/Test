@@ -22,11 +22,11 @@ public class TaskStater implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        TaskEntity task1 = new TaskEntity(1, "测试1", "0/5 * * * * ?");
-      //  TaskEntity task2 = new TaskEntity(2, "测试2", "0/5 * * * * ?");
         LinkedList<TaskEntity> taskEntities = new LinkedList<>();
+        TaskEntity task1 = new TaskEntity(1, "测试1", "0 */2 * * * ?");
         taskEntities.add(task1);
-        //taskEntities.add(task2);
+//        TaskEntity task2 = new TaskEntity(2, "测试2", "0 */2 * * * ?");
+//        taskEntities.add(task2);
         myScheduledConfig.batchRefreshTasks(taskEntities);
     }
 }

@@ -82,6 +82,17 @@ public class MyScheduledConfig implements SchedulingConfigurer {
 
 
     /**
+     * 判断任务是否已经结束
+     *
+     * @param taskId
+     * @return
+     */
+    public boolean taskIsDone(Integer taskId) {
+        return Optional.ofNullable(scheduledMap.get(taskId)).map(ScheduledFuture::isDone).orElse(true);
+    }
+
+
+    /**
      * 批量停止任务
      *
      * @param taskEntities
