@@ -14,6 +14,8 @@ import org.springframework.stereotype.Component;
 @Component
 public class BatchJobListener implements JobExecutionListener {
 
+
+
     @Override
     public void beforeJob(JobExecution jobExecution) {
         log.info("job执行之前", jobExecution.getJobId());
